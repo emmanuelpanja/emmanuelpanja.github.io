@@ -33,7 +33,7 @@ head {
   font-style: Normal;
   @font-face;
   font-family: Nelphim-Italic;
-  src: url("./html/assets/font/Nephilm_Italic.woff2"), url("./assets/font/Nephilm_Italic.woff");
+  src: url("./assets/font/Nephilm_Italic.woff2"), url("./assets/font/Nephilm_Italic.woff");
   font-weight: 300;
   font-style: Italics;
   @font-face;
