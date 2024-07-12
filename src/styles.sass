@@ -1,4 +1,4 @@
-$white: #ffff
+$white: #fff
 $light-grey: #727374
 $grey: #4b4b4b
 $black: #0a0a0a
@@ -56,54 +56,121 @@ canvas
 body
     background-color: $black
     margin: 0px
-    .navbar-container#navbar-container
-        justify-content: space-around
-        width: calc(var(--svw)* 100)
+
+    // Mixins
+    @mixin flex-center
+        display: flex
+        align-items: center
+        justify-content: center
+    .navbar-container
+        width: 100%
         height: 100px
         display: flex
-        flex-direction: row
+        justify-content: space-around
+        @media (max-width: $breakpoint-mobile)
+            justify-content: space-between
         align-items: center
-        background-color: #0a0a0a
+        background-color: $black
         position: fixed
-        top: 0px
-        border-bottom: 1px solid $white 
+        top: 0
+        border-bottom: 1px solid $white
         z-index: 1000
+        padding: 0 20px
+        box-sizing: border-box
+
         #logo_container
             padding: 10px
             display: block
             width: 40px
             height: 40px
             align-items: center
+
         .navbar
             display: flex
             flex-direction: row
             height: 50px
             align-items: center
+
+            @media (max-width: $breakpoint-mobile)
+                display: none
+
             .vertical-divider
                 width: 2px
                 background-color: $light-grey
                 height: 30%
 
         .navbutton
-            display: flex
-            align-items: center
-            justify-content: center
+            @include flex-center
             text-decoration: none
             width: 150px
             height: 100px
             background-color: transparent
             text-align: center
-            color: white
+            color: $white
             font-family: Quicksand, sans-serif
             font-weight: 300
             font-size: 16px
             letter-spacing: 1px
             transition: background-color 0.5s
-            &:hover
-                color: black
+
+            &:hover, &.active
+                color: $black
                 background-color: $white
+
         .hamburger-icon
             display: none
+            flex-direction: column
+            justify-content: space-around
+            width: 30px
+            height: 25px
+            cursor: pointer
+
+            @media (max-width: $breakpoint-mobile)
+                display: flex
+
+            span
+                display: block
+                width: 100%
+                height: 3px
+                background-color: $white
+                transition: all 0.3s ease
+
+        .menu-drawer
+            display: none
+            position: fixed
+            top: 100px
+            left: 0
+            width: 100%
+            background-color: $black
+            flex-direction: column
+            align-items: center
+            padding: 20px 0
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3)
+            transform: translateY(-100%) // Start off-screen
+            &.open
+                display: flex
+                transform: translateY(0) // Move into view
+
+            @media (max-width: $breakpoint-mobile)
+                &.open
+                    display: flex
+
+            a
+                color: $white
+                text-decoration: none
+                padding: 15px 0
+                width: 100%
+                text-align: center
+                font-family: Quicksand, sans-serif
+                font-weight: 300
+                font-size: 16px
+                letter-spacing: 1px
+                transition: background-color 0.3s
+
+                &:hover, &.active
+                    background-color: $white
+                    color: $black
+
     header
         display: flex
         flex-direction: column

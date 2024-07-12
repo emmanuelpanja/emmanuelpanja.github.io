@@ -8,22 +8,34 @@ html(lang="en")
     link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
     link(rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap")
     link(rel="stylesheet" href="styles2.css")
+    mixin navbar(currentPage)
+      .navbar-container#navbar-container
+        #logo_container
+          img(src="assets/epnew_transp.svg" alt="Logo")
+        nav.navbar
+          a.navbutton(href="index.html" class=currentPage === 'home' ? 'active' : '') home
+          .vertical-divider
+          a.navbutton(href="music.html" class=currentPage === 'music' ? 'active' : '') music
+          .vertical-divider
+          a.navbutton(href="experiments.html" class=currentPage === 'experiments' ? 'active' : '') experiments
+          .vertical-divider
+          a.navbutton(href="blog.html" class=currentPage === 'blog' ? 'active' : '') blog
+          .vertical-divider
+          a.navbutton(href="contact.html" class=currentPage === 'contact' ? 'active' : '') contact
+        .hamburger-icon
+          span
+          span
+          span
+        .menu-drawer
+          a(href="index.html" class=currentPage === 'home' ? 'active' : '') home
+          a(href="music.html" class=currentPage === 'music' ? 'active' : '') music
+          a(href="experiments.html" class=currentPage === 'experiments' ? 'active' : '') experiments
+          a(href="blog.html" class=currentPage === 'blog' ? 'active' : '') blog
+          a(href="contact.html" class=currentPage === 'contact' ? 'active' : '') contact
+    
   body
+    +navbar('home')
     script(src="script.js")
-    .navbar-container#navbar-container
-      #logo_container
-        img(src="assets/epnew_transp.svg" alt="Logo")
-      nav.navbar
-        a.navbutton(href="index.html") home
-        .vertical-divider
-        a.navbutton(href="music.html") music
-        .vertical-divider
-        a.navbutton(href="experiments.html") experiments
-        .vertical-divider
-        a.navbutton(href="blog.html") blog
-        .vertical-divider
-        a.navbutton(href="contact.html") contact
-      .hamburger-icon
     canvas
     header
       h1#hero H
