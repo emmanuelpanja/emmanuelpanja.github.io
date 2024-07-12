@@ -25,22 +25,28 @@ body.hide-scrollbar::-webkit-scrollbar {
   display: none;
 }
 
-head {
-  @font-face;
-  font-family: Nelphim_e;
-  src: url("./assets/font/Nephilm_e.woff2"), url("./assets/font/Nephilm _e.woff") for;
+@font-face {
+  font-family: 'Nelphim_e';
+  src: url('./assets/font/Nephilm_e.woff2') format('woff2'),
+       url('./assets/font/Nephilm_e.woff') format('woff');
   font-weight: 300;
-  font-style: Normal;
-  @font-face;
-  font-family: Nelphim-Italic;
-  src: url("./assets/font/Nephilm_Italic.woff2"), url("./assets/font/Nephilm_Italic.woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Nelphim-Italic';
+  src: url('./assets/font/Nephilm_Italic.woff2') format('woff2'),
+       url('./assets/font/Nephilm_Italic.woff') format('woff');
   font-weight: 300;
-  font-style: Italics;
-  @font-face;
-  font-family: Nelphim;
-  src: url("./assets/font/Nephilm.woff2"), url("./assets/font/Nephilm.woff");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Nelphim';
+  src: url('./assets/font/Nephilm.woff2') format('woff2'),
+       url('./assets/font/Nephilm.woff') format('woff');
   font-weight: 300;
-  font-style: Regular;
+  font-style: normal;
 }
 
 canvas {
