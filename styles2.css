@@ -233,7 +233,7 @@ body header h1 {
 
 @media (max-width: 480px) {
   body header h1 {
-    font-size: 36px; /* Further adjusted font size for even smaller screens */
+    font-size: 48px; /* Further adjusted font size for even smaller screens */
   }
 }
 
