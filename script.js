@@ -15,14 +15,33 @@ document.addEventListener("DOMContentLoaded", function() {
   window.onscroll = function() {
     var currentScrollPos = window.scrollY;
     var navbar = document.getElementById("navbar-container");
+    const menuDrawer = document.querySelector('.menu-drawer');
+    const hamburger = document.querySelector('.hamburger-icon');
+    const body = document.body;
+
     if (navbar) { // Check if the element exists
       if (prevScrollpos > currentScrollPos) {
         navbar.style.top = "0";
       } else {
-        navbar.style.top = "-100px";
+        navbar.style.top = "-70px";
       }
-      navbar.style.transition = "top 1s"; // Add 2s transition
+      navbar.style.transition = "top 1s"; // Add 1s transition
     }
+
+    // Close the menu drawer if open and scrolling down
+    if (menuDrawer && menuDrawer.classList.contains('open') && prevScrollpos < currentScrollPos) {
+      menuDrawer.style.transform = 'translateY(-100%)';
+      menuDrawer.style.opacity = '0';
+
+      setTimeout(() => {
+        menuDrawer.classList.remove('open');
+        menuDrawer.style.display = 'none';
+      }, 1000); // Duration of the CSS transition
+
+      hamburger.classList.remove('active');
+      body.classList.remove('menu-open');
+    }
+
     prevScrollpos = currentScrollPos;
   }
 });
@@ -34,7 +53,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (hamburger && menuDrawer) {
     hamburger.addEventListener('click', () => {
-      menuDrawer.classList.toggle('open');
+      if (menuDrawer.classList.contains('open')) {
+        // Close the menu drawer
+        menuDrawer.style.transform = 'translateY(-100%)';
+        menuDrawer.style.opacity = '0';
+
+        // Wait for the animation to finish before setting display to none
+        setTimeout(() => {
+          menuDrawer.classList.remove('open');
+          menuDrawer.style.display = 'none';
+        }, 500); // Duration of the CSS transition
+      } else {
+        // Open the menu drawer
+        menuDrawer.style.display = 'flex';
+
+        // Ensure the display change is registered before starting the transition
+        requestAnimationFrame(() => {
+          menuDrawer.classList.add('open');
+          menuDrawer.style.transform = 'translateY(0)';
+          menuDrawer.style.opacity = '1';
+        });
+      }
+      
       hamburger.classList.toggle('active');
       body.classList.toggle('menu-open');
       console.log('Menu clicked'); // Debugging line
@@ -43,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.error('Hamburger or menu drawer not found'); // Debugging line
   }
 });
+
 
 /*
 document.addEventListener('DOMContentLoaded', function() {
